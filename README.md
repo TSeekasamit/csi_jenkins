@@ -1,5 +1,5 @@
 <<<<<<< HEAD
-# Official Jenkins Docker image
+# Official Jenkins Docker image with specify UID and GID to match between on Local and Docker for CSI Team.
 
 The Jenkins Continuous Integration and Delivery server.
 
