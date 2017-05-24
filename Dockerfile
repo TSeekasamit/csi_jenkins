@@ -1,7 +1,5 @@
 FROM openjdk:8-jdk
 
-RUN mkdir -p /appdata/csi_docker
-
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
@@ -71,3 +69,7 @@ ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 # from a derived Dockerfile, can use `RUN plugins.sh active.txt` to setup /usr/share/jenkins/ref/plugins from a support bundle
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
+
+export http_proxy=http://webproxy.int.westgroup.com:80
+export https_proxy=http://webproxy.int.westgroup.com:80
+
