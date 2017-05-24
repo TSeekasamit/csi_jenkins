@@ -1,5 +1,7 @@
 FROM openjdk:8-jdk
 
+RUN mkdir -p /appdata/csi_docker
+
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 ENV JENKINS_HOME /var/jenkins_home
