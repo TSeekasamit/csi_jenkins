@@ -2,7 +2,8 @@
 FROM oraclelinux:7.1
 
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
-
+#ENV http_proxy http://webproxy.int.westgroup.com:80
+3ENV https_proxy http://webproxy.int.westgroup.com:80
 #RUN apt-add-repository ppa:webupd8team/java && \
 #    apt-get update -y && \
 #    apt-get install oracle-java8-installer -y && \
@@ -10,8 +11,9 @@ FROM oraclelinux:7.1
 #    apt-get install oracle-java8-set-default -y
 
 #RUN apt-get install libwebkitgtk-1.0-0 -y
-RUN yum -y update && yum clean all
-#RUN yum -y install gcc libgcc glibc-devel glibc-devel.i386 libgcc.i386
+RUN yum -y update 
+RUN yum clean all
+##RUN yum -y install gcc libgcc glibc-devel glibc-devel.i386 libgcc.i386
 
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
