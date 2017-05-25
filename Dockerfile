@@ -1,6 +1,6 @@
 #FROM mcpayment/ubuntu-java8
 FROM oraclelinux:7.3
-
+RUN yum install java -y
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
