@@ -1,7 +1,8 @@
+FROM openjdk:8-jdk
 #FROM mcpayment/ubuntu-java8
-FROM oraclelinux:7.3
-RUN yum install java -y
-#RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+#FROM oraclelinux:7.3
+#RUN yum install java -y
+RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
 #RUN apt-add-repository ppa:webupd8team/java && \
@@ -76,6 +77,9 @@ EXPOSE 8080
 
 # will be used by attached slave agents:
 EXPOSE 50000
+
+EXPOSE 8802
+EXPOSE 9051
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
