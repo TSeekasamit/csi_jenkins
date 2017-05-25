@@ -1,8 +1,8 @@
-FROM ubuntu:latest
+FROM mcpayment/ubuntu-java8
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
-RUN apt-add-repository ppa:webupd8team/java && \
+#RUN apt-add-repository ppa:webupd8team/java && \
     apt-get update -y && \
     apt-get install oracle-java8-installer -y && \
     rm -rf /var/cache/oracle-jdk8-installer && \
@@ -12,8 +12,8 @@ RUN apt-add-repository ppa:webupd8team/java && \
 
 #RUN apt-get install libwebkitgtk-1.0-0
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-ENV JRE_HOME /usr/lib/jvm/java-8-oracle/jre
+#ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+#ENV JRE_HOME /usr/lib/jvm/java-8-oracle/jre
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
