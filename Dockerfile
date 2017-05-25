@@ -1,6 +1,8 @@
-FROM openjdk:7-jdk
+FROM openjdk:8-jdk
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get install libwebkitgtk-1.0-0
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
@@ -70,5 +72,5 @@ ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
-ENV http_proxy http://webproxy.int.westgroup.com:80
-ENV https_proxy http://webproxy.int.westgroup.com:80
+#ENV http_proxy http://webproxy.int.westgroup.com:80
+#ENV https_proxy http://webproxy.int.westgroup.com:80
