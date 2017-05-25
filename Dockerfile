@@ -2,7 +2,7 @@ FROM mcpayment/ubuntu-java8
 
 RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
-#RUN apt-add-repository ppa:webupd8team/java && \
+RUN apt-add-repository ppa:webupd8team/java && \
     apt-get update -y && \
     apt-get install oracle-java8-installer -y && \
     rm -rf /var/cache/oracle-jdk8-installer && \
