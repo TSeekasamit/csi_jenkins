@@ -3,7 +3,7 @@ FROM oraclelinux:7.1
 
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 #ENV http_proxy http://webproxy.int.westgroup.com:80
-3ENV https_proxy http://webproxy.int.westgroup.com:80
+#ENV https_proxy http://webproxy.int.westgroup.com:80
 #RUN apt-add-repository ppa:webupd8team/java && \
 #    apt-get update -y && \
 #    apt-get install oracle-java8-installer -y && \
