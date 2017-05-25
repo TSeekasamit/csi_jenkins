@@ -12,7 +12,7 @@ FROM oraclelinux:7.1
 
 #RUN apt-get install libwebkitgtk-1.0-0 -y
 RUN yum -y update 
-RUN yum clean all
+#RUN yum clean all
 ##RUN yum -y install gcc libgcc glibc-devel glibc-devel.i386 libgcc.i386
 
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
