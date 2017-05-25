@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-#RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 RUN apt-add-repository ppa:webupd8team/java && \
     apt-get update -y && \
@@ -8,7 +8,7 @@ RUN apt-add-repository ppa:webupd8team/java && \
     rm -rf /var/cache/oracle-jdk8-installer && \
     apt-get install oracle-java8-set-default -y
 
-RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
+#RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 
 #RUN apt-get install libwebkitgtk-1.0-0
 
