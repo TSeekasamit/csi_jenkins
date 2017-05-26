@@ -93,5 +93,9 @@ ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/jenkins.sh"]
 COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
+
+ENV PENTAHO_JAVA_HOME $JAVA_HOME
+ENV PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
