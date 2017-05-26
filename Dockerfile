@@ -1,4 +1,7 @@
 FROM openjdk:8-jdk
+
+ENV LC_ALL C.UTF-8
+
 #FROM mcpayment/ubuntu-java8
 #FROM oraclelinux:7.3
 #RUN yum install java -y
@@ -77,9 +80,6 @@ EXPOSE 8080
 
 # will be used by attached slave agents:
 EXPOSE 50000
-
-EXPOSE 8802
-EXPOSE 9051
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
