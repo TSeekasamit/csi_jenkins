@@ -1,34 +1,12 @@
 FROM openjdk:8-jdk
-#FROM openjdk:8-jdk-alpine
+
 MAINTAINER Teerawit S.
 ENV LC_ALL C.UTF-8
-
-#FROM mcpayment/ubuntu-java8
-#FROM oraclelinux:7.3
-#RUN yum install java -y
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
 RUN apt-get update; apt-get -y upgrade; apt-get install -y lftp curl wget dstat dnsutils rlwrap libaio-dev
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-#ENV http_proxy http://webproxy.int.westgroup.com:80
-#ENV https_proxy http://webproxy.int.westgroup.com:80
-#RUN apt-add-repository ppa:webupd8team/java && \
-#    apt-get update -y && \
-#    apt-get install oracle-java8-installer -y && \
-#    rm -rf /var/cache/oracle-jdk8-installer && \
-#    apt-get install oracle-java8-set-default -y
-
-#RUN apt-get install libwebkitgtk-1.0-0 -y
-#RUN yum clean all
-##RUN yum -y install gcc libgcc glibc-devel glibc-devel.i386 libgcc.i386
-
-#RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
-
-#RUN apt-get install libwebkitgtk-1.0-0
-
-#ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-#ENV JRE_HOME /usr/lib/jvm/java-8-oracle/jre
 
 ENV JENKINS_HOME /var/jenkins_home
 ENV JENKINS_SLAVE_AGENT_PORT 50000
@@ -77,13 +55,6 @@ ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-w
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
   && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha256sum -c -
 
-RUN mkdir -p /var/jenkins_home
-WORKDIR /var/jenkins_home
-RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
-RUN rm pdi-ce-7.1.0.0-12.zip
-
-
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
@@ -94,6 +65,11 @@ EXPOSE 8080
 EXPOSE 50000
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
+
+WORKDIR /var/jenkins_home
+RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
+
 
 USER ${user}
 
@@ -115,6 +91,8 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
 #USER root
+#WORKDIR "$JENKINS_HOME"
+#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 #WORKDIR /home
 #RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 #RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
