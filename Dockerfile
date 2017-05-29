@@ -63,10 +63,10 @@ COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groov
 
 # jenkins version being bundled in this docker image
 ARG JENKINS_VERSION
-ENV JENKINS_VERSION ${JENKINS_VERSION:-2.46.2}
+ENV JENKINS_VERSION ${JENKINS_VERSION:-2.46.3}
 
 # jenkins.war checksum, download will be validated using it
-ARG JENKINS_SHA=aa7f243a4c84d3d6cfb99a218950b8f7b926af7aa2570b0e1707279d464472c7
+ARG JENKINS_SHA=00424d3c851298b29376d1d09d7d3578a2bc4a03acf3914b317c47707cd5739a
 
 # Can be used to customize where jenkins.war get downloaded from
 ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-war/${JENKINS_VERSION}/jenkins-war-${JENKINS_VERSION}.war
@@ -109,5 +109,5 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 WORKDIR /var/jenkins_home/
 RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-#RUN unzip pdi-ce-7.1.0.0-12.zip -d data-integration
+RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
 #RUN rm pdi-ce-7.1.0.0-12.zip
