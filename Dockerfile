@@ -7,7 +7,8 @@ ENV LC_ALL C.UTF-8
 #FROM oraclelinux:7.3
 #RUN yum install java -y
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
-
+#ENV http_proxy http://webproxy.int.westgroup.com:80
+#ENV https_proxy http://webproxy.int.westgroup.com:80
 RUN apt-get update; apt-get -y upgrade; apt-get install -y lftp curl wget dstat dnsutils rlwrap libaio-dev
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 #ENV http_proxy http://webproxy.int.westgroup.com:80
@@ -75,6 +76,8 @@ ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-w
 # see https://github.com/docker/docker/issues/8331
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
   && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha256sum -c -
+
+RUN mkdir -p /var/jenkins_home
 WORKDIR /var/jenkins_home
 RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
