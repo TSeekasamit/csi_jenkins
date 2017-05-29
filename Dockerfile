@@ -66,6 +66,8 @@ EXPOSE 50000
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
+USER root
+
 WORKDIR /var/jenkins_home
 RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
