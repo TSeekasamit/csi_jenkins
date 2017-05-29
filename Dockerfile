@@ -76,6 +76,11 @@ ARG JENKINS_URL=https://repo.jenkins-ci.org/public/org/jenkins-ci/main/jenkins-w
 RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
   && echo "${JENKINS_SHA}  /usr/share/jenkins/jenkins.war" | sha256sum -c -
 
+RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
+RUN rm pdi-ce-7.1.0.0-12.zip
+
+
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
@@ -106,8 +111,8 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 #ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 #ENV http_proxy http://webproxy.int.westgroup.com:80
 #ENV https_proxy http://webproxy.int.westgroup.com:80
-USER root
-WORKDIR /home
-RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
+#USER root
+#WORKDIR /home
+#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+#RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
 #RUN rm pdi-ce-7.1.0.0-12.zip
