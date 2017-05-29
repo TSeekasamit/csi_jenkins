@@ -108,6 +108,6 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 #ENV https_proxy http://webproxy.int.westgroup.com:80
 
 WORKDIR /var/jenkins_home/
-RUN https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 #UN unzip pdi-ce-7.1.0.0-12.zip -d data-integration
 #UN rm pdi-ce-7.1.0.0-12.zip
