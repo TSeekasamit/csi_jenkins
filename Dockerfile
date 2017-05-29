@@ -1,5 +1,5 @@
-#FROM openjdk:8-jdk
-FROM openjdk:8-jdk-alpine
+FROM openjdk:8-jdk
+#FROM openjdk:8-jdk-alpine
 MAINTAINER Teerawit S.
 ENV LC_ALL C.UTF-8
 
