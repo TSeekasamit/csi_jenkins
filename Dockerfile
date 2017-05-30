@@ -90,8 +90,8 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 #EnV _PENTAHO_JAVA /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib
 
 #ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-#ENV http_proxy http://webproxy.int.westgroup.com:80
-#ENV https_proxy http://webproxy.int.westgroup.com:80
+ENV http_proxy http://webproxy.int.westgroup.com:80
+ENV https_proxy http://webproxy.int.westgroup.com:80
 #USER root
 #WORKDIR "$JENKINS_HOME"
 #RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
