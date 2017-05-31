@@ -58,6 +58,11 @@ RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
+
+RUN mkdir -p /var/kettle_home
+RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip -P /var/kettle_home
+RUN chown -R ${user} /var/kettle_home
+
 # for main web interface:
 EXPOSE 8080
 
@@ -66,11 +71,6 @@ EXPOSE 50000
 
 ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 
-#USER root
-RUN mkdir -p /var/kettle_home
-WORKDIR /var/kettle_home
-RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-RUN chown -R ${user} /var/kettle_home
 #RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
 
 
@@ -85,21 +85,7 @@ COPY plugins.sh /usr/local/bin/plugins.sh
 COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 
 
-#ENV PENTAHO_JAVA_HOME $JAVA_HOME
 
 #ENV _PENTAHO_JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 #EnV _PENTAHO_JAVA /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib
-
-#ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-#ENV http_proxy http://webproxy.int.westgroup.com:80
-#ENV https_proxy http://webproxy.int.westgroup.com:80
-#USER root
-#WORKDIR "$JENKINS_HOME"
-#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-#WORKDIR /var/jenkins_home
-#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-#RUN mkdir -p /var/kettle_home
-#WORKDIR /var/kettle_home
-#RUN unzip pdi-ce-7.1.0.0-12.zip -d /var/jenkins_home/kettle
-#RUN rm pdi-ce-7.1.0.0-12.zip
 
