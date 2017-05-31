@@ -58,10 +58,10 @@ RUN curl -fsSL ${JENKINS_URL} -o /usr/share/jenkins/jenkins.war \
 ENV JENKINS_UC https://updates.jenkins.io
 RUN chown -R ${user} "$JENKINS_HOME" /usr/share/jenkins/ref
 
-
+#Kettle
 RUN mkdir -p /var/kettle_home
 RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip -P /var/kettle_home
-RUN chown -R ${user} /var/kettle_home
+RUN chown -R ${user}:${user} /var/kettle_home
 
 # for main web interface:
 EXPOSE 8080
