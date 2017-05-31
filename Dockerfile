@@ -69,8 +69,8 @@ ENV COPY_REFERENCE_FILE_LOG $JENKINS_HOME/copy_reference_file.log
 #USER root
 
 #WORKDIR /var/jenkins_home
-RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
+#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+#RUN unzip pdi-ce-7.1.0.0-12.zip -d kettle
 
 
 USER ${user}
@@ -90,13 +90,15 @@ COPY install-plugins.sh /usr/local/bin/install-plugins.sh
 #EnV _PENTAHO_JAVA /usr/lib/jvm/java-1.8.0-openjdk-amd64/jre/lib
 
 #ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
-ENV http_proxy http://webproxy.int.westgroup.com:80
-ENV https_proxy http://webproxy.int.westgroup.com:80
+#ENV http_proxy http://webproxy.int.westgroup.com:80
+#ENV https_proxy http://webproxy.int.westgroup.com:80
 #USER root
 #WORKDIR "$JENKINS_HOME"
 #RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
 #WORKDIR /var/jenkins_home
-#RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
-RUN unzip pdi-ce-7.1.0.0-12.zip -d /var/jenkins_home/kettle
+RUN wget https://sourceforge.net/projects/pentaho/files/Data%20Integration/7.1/pdi-ce-7.1.0.0-12.zip
+RUN mkdir -p /var/kettle_home
+WORKDIR /var/kettle_home
+#RUN unzip pdi-ce-7.1.0.0-12.zip -d /var/jenkins_home/kettle
 #RUN rm pdi-ce-7.1.0.0-12.zip
 
