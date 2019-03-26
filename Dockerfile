@@ -3,8 +3,7 @@ FROM openjdk:8-jdk
 MAINTAINER Teerawit S.
 ENV LC_ALL C.UTF-8
 #RUN apt-get update && apt-get install -y git curl && rm -rf /var/lib/apt/lists/*
-#ENV http_proxy http://webproxy.int.westgroup.com:80
-#ENV https_proxy http://webproxy.int.westgroup.com:80
+
 RUN apt-get update; apt-get -y upgrade; apt-get install -y lftp curl wget dstat dnsutils rlwrap libaio-dev ruby rubygems
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
